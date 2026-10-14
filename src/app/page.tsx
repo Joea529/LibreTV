@@ -16,6 +16,7 @@ import { useToast } from '@/components/toast';
 import { EmptyState } from '@/components/states';
 import { Icon } from '@/components/icon';
 import { SiteFooter } from '@/components/site-footer';
+import { OverseasSourceBanner } from '@/components/overseas-source-banner';
 
 /**
  * 首页：搜索（URL ?s= 驱动，可后退/分享）+ 豆瓣推荐。
@@ -299,6 +300,17 @@ function HomeContent() {
                 )}
               </h2>
             </div>
+
+            {/* 海外直连保障专线提示：位于部分源失败的上方，提供切片实测可播验证与一键优先换源 */}
+            {failures.length > 0 && (
+              <OverseasSourceBanner
+                onRetryWithOverseas={() => {
+                  if (urlQuery) {
+                    runSearch(urlQuery);
+                  }
+                }}
+              />
+            )}
 
             {failures.length > 0 && (
               <div className="mb-3 text-xs bg-chip rounded-lg px-3 py-2 flex flex-wrap gap-x-3 gap-y-1">
