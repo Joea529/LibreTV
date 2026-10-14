@@ -1,23 +1,29 @@
 import type { SourceConfig } from './types';
 
 export const BUILTIN_VOD_SOURCES: SourceConfig[] = [
-  { key: 'builtin_0', name: '索尼资源', url: 'https://suoniapi.com/api.php/provide/vod' },
-  { key: 'builtin_1', name: '极速资源', url: 'https://jszyapi.com/api.php/provide/vod' },
-  { key: 'builtin_2', name: '红牛资源', url: 'https://www.hongniuzy2.com/api.php/provide/vod' },
-  { key: 'builtin_3', name: '暴风资源', url: 'https://bfzyapi.com/api.php/provide/vod' },
-  { key: 'builtin_4', name: '光速资源', url: 'https://api.guangsuapi.com/api.php/provide/vod' },
-  { key: 'builtin_5', name: '百度资源', url: 'https://api.apibdzy.com/api.php/provide/vod' },
-  { key: 'builtin_6', name: '量子资源', url: 'https://cj.lziapi.com/api.php/provide/vod' },
-  { key: 'builtin_7', name: '非凡资源', url: 'https://cj.ffzyapi.com/api.php/provide/vod' },
-  { key: 'builtin_8', name: '樱花动漫', url: 'https://m3u8.apiyhzy.com/api.php/provide/vod' },
-  { key: 'builtin_9', name: 'U酷资源', url: 'https://api.ukuapi.com/api.php/provide/vod' },
-  { key: 'builtin_10', name: '金鹰资源', url: 'https://jinyingzy.com/provide/vod/from/jinying/at/json' },
+  // 优质高速主流大站
+  { key: 'builtin_0', name: '索尼超清', url: 'https://suoniapi.com/api.php/provide/vod' },
+  { key: 'builtin_1', name: '极速秒播', url: 'https://jszyapi.com/api.php/provide/vod' },
+  { key: 'builtin_2', name: '红牛高清', url: 'https://www.hongniuzy2.com/api.php/provide/vod' },
+  { key: 'builtin_3', name: '量子资源', url: 'https://cj.lziapi.com/api.php/provide/vod' },
+  { key: 'builtin_4', name: '非凡高清', url: 'https://cj.ffzyapi.com/api.php/provide/vod' },
+  { key: 'builtin_5', name: '暴风资源', url: 'https://bfzyapi.com/api.php/provide/vod' },
+  { key: 'builtin_6', name: '光速专线', url: 'https://api.guangsuapi.com/api.php/provide/vod' },
+  { key: 'builtin_7', name: '百度秒播', url: 'https://api.apibdzy.com/api.php/provide/vod' },
+  // 海外、蓝光与特色专区
+  { key: 'builtin_8', name: '海外看专线 (Haiwaikan)', url: 'https://haiwaikan.com/api.php/provide/vod' },
+  { key: 'builtin_9', name: '优质1080P库', url: 'http://api.1080zyku.com/inc/api.php/provide/vod' },
+  { key: 'builtin_10', name: '爱坤蓝光', url: 'https://ikunzyapi.com/api.php/provide/vod' },
+  { key: 'builtin_11', name: '闪电专线', url: 'https://sdzyapi.com/api.php/provide/vod' },
+  { key: 'builtin_12', name: '最大电影网', url: 'https://zuidazy.me/api.php/provide/vod' },
+  { key: 'builtin_13', name: '樱花动漫番剧', url: 'https://m3u8.apiyhzy.com/api.php/provide/vod' },
+  { key: 'builtin_14', name: 'U酷综合', url: 'https://api.ukuapi.com/api.php/provide/vod' },
+  { key: 'builtin_15', name: '金鹰影视', url: 'https://jinyingzy.com/provide/vod/from/jinying/at/json' },
 ];
 
 /**
  * 部署者通过 DEFAULT_SOURCES 环境变量预置的采集站。
- * 格式为 JSON 数组：[{"name":"源名","url":"https://.../api.php/provide/vod","detail":"https://...","isAdult":false}]
- * 未配置环境变量时，默认返回高质量内置采集源。
+ * 未配置环境变量时，默认返回 16 个精选高速全网与海外点播源。
  */
 export function getEnvSources(): SourceConfig[] {
   const raw = process.env.DEFAULT_SOURCES;
